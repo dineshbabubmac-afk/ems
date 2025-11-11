@@ -10,4 +10,4 @@ WORKDIR /app
 # cmd: command to execude the jar file
 CMD ["java", "-jar", "reward-system.jar"]
 
-EXPOSE 8080
+EXPOSE 8085

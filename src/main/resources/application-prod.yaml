@@ -1,0 +1,56 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: reward-system
+    version: 1.0
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+  messages:
+    basename: i18n.messages
+    encoding: UTF-8
+  banner:
+    location: classpath:banner.txt
+  datasource:
+    url: jdbc:postgresql://localhost:5432/reward_system
+    username: securitydbuser
+    password: ti4upuq8klcut9u
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        show_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+jwt:
+  secret: b6d8d18515d8ab4bc96a5130cba685057c19c004cd0198f5ac893c0f73c557b1ad44a7b55be1dba5fc324b9f1d2a8e1c98e86105cc6c1112438c2b8689f01154020aaacf5cd8f17b6266852760ab716d8a86caa5543f0330263f4ae48523ca4347f5966334d037089f8d474d702c0eb2a97bc1f2a2fdc3096bd929603cdfc591e89a6ade18baa8d59a76a710865653692c473834116e13eae42442f3eee807f0f2a588ac0c42144b588dd1ec343a065176e5ad92464756d134858e001ad711daba05b9c64aa9261d2b2ae6fb4d5eb0a4740821d309660ac177e10aaf1b8889918b2af24cab9d357aa7fbde6d6a03c1ecdd784357d14dd1eb04a2bc7a395990ed
+  accessTokenExpire: 604800000 #5mins
+  refreshTokenExpire: 604800000 #7days
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: alpha
+    tagsSorter: alpha
+logging:
+  level:
+    com.annztech.localizeapp: info
+    org.springframework: info
+    org.apache.catalina: info
+    org.hibernate: info
+    root: info
+  file:
+    path: /logs/app.log
+zepto:
+  api-key: Zoho-enczapikey PHtE6r1YRu+/3jEq+xVU4PG9E8KjYYl8++9neQNCsNtFDP8ETU1c+dssxjXlqUsuAaNCRf+TmYJgtOvK4b6EJWnkNz0aX2qyqK3sx/VYSPOZsbq6x00ctVoddkLeVYXmcN9r3CLXvNfTNA==
+  base-url: https://api.zeptomail.in/v1.1/email
+app:
+  base-url: https://aicybershield.net
+  file-url: https://aicybershield.net/reward-system
+openapi:
+  server-url: https://aicybershield.net/reward-system
+file:
+  upload-dir: /var/reward_system/uploads

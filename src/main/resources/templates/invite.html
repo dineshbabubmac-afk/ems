@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>You're Invited to {{app_name}}!</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+          font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          background: linear-gradient(135deg, #f6f9fc 0%, #eef2f7 100%);
+          color: #1e293b;
+          padding: 30px 15px;
+          line-height: 1.6;
+        }
+        .email-wrapper {
+          max-width: 640px;
+          margin: 0 auto;
+          background: #ffffff;
+          border-radius: 20px;
+          overflow: hidden;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+          border: 1px solid #e2e8f0;
+        }
+        .header {
+          background: linear-gradient(135deg, #5eead4 0%, #3b82f6 100%);
+          text-align: center;
+          padding: 50px 30px;
+          color: #fff;
+          position: relative;
+        }
+        .header h1 {
+          font-size: 30px;
+          font-weight: 700;
+          margin-bottom: 8px;
+        }
+        .header p {
+          font-size: 16px;
+          opacity: 0.95;
+        }
+        .content {
+          padding: 40px 35px;
+          background: #ffffff;
+        }
+        .greeting {
+          font-size: 22px;
+          font-weight: 600;
+          margin-bottom: 10px;
+          color: #0f172a;
+        }
+        .intro {
+          font-size: 16px;
+          color: #64748b;
+          margin-bottom: 35px;
+        }
+        .info-card {
+          background: rgba(248, 250, 252, 0.95);
+          border-radius: 16px;
+          padding: 25px;
+          margin-bottom: 35px;
+          border: 1px solid #e2e8f0;
+          backdrop-filter: blur(6px);
+        }
+        .info-title {
+          font-size: 18px;
+          font-weight: 700;
+          color: #0f172a;
+          margin-bottom: 20px;
+        }
+        .info-item {
+          display: flex;
+          align-items: center;
+          margin-bottom: 18px;
+        }
+        .icon {
+          width: 44px;
+          height: 44px;
+          background: linear-gradient(135deg, #3b82f6, #5eead4);
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-size: 20px;
+          margin-right: 15px;
+          box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+        }
+        .info-text {
+          font-size: 15px;
+        }
+        .info-label {
+          font-weight: 600;
+          color: #1e293b;
+          display: block;
+        }
+        .info-value {
+          color: #64748b;
+        }
+        .cta {
+          text-align: center;
+          margin: 40px 0 20px;
+        }
+        .cta a {
+          background: linear-gradient(135deg, #3b82f6 0%, #5eead4 100%);
+          color: #fff;
+          text-decoration: none;
+          padding: 16px 45px;
+          border-radius: 40px;
+          font-size: 16px;
+          font-weight: 600;
+          display: inline-block;
+          box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25);
+          transition: all 0.25s ease;
+        }
+        .cta a:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 14px 35px rgba(59, 130, 246, 0.35);
+        }
+        .disclaimer {
+          text-align: center;
+          font-size: 14px;
+          color: #94a3b8;
+          margin-top: 25px;
+        }
+        .footer {
+          background: #0f172a;
+          color: #94a3b8;
+          text-align: center;
+          padding: 25px 30px;
+          font-size: 14px;
+        }
+        .footer .brand {
+          color: #5eead4;
+          font-weight: 600;
+        }
+        @media (max-width: 600px) {
+          .content, .header { padding: 25px 20px; }
+          .info-card { padding: 20px; }
+          .header h1 { font-size: 24px; }
+          .greeting { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+<div class="email-wrapper">
+    <!-- Header -->
+    <div class="header">
+        <h1>🌟 You’re Invited!</h1>
+        <p>Welcome to the future of collaboration with {{app_name}}</p>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <div class="greeting">Hi {{receiver_name}},</div>
+        <p class="intro">
+            We're excited to have you join <strong>{{app_name}}</strong>!
+            Your journey with us starts now — we can’t wait to see what we’ll achieve together.
+        </p>
+
+        <!-- Info Card -->
+        <div class="info-card">
+            <div class="info-title">Your Invitation Details</div>
+
+            <div class="info-item">
+                <div class="icon">🏢</div>
+                <div class="info-text">
+                    <span class="info-label">Department</span>
+                    <span class="info-value">{{department_name}}</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="icon">💼</div>
+                <div class="info-text">
+                    <span class="info-label">Role</span>
+                    <span class="info-value">{{job_title}}</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="icon">📍</div>
+                <div class="info-text">
+                    <span class="info-label">Location</span>
+                    <span class="info-value">{{location_name}}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta">
+            <a href="{{invite_link}}">Accept Invitation</a>
+        </div>
+
+        <p class="disclaimer">
+            If you weren’t expecting this, you can safely ignore this email — the invitation will expire automatically.
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2025 <span class="brand">{{app_name}}</span>. All rights reserved.</p>
+    </div>
+</div>
+</body>
+</html>

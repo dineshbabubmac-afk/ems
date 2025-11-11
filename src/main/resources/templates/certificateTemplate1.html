@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Certificate of Achievement</title>
+
+    <!-- Optional: change font by replacing Google Font below -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root{
+          --card-bg: linear-gradient(135deg, #6a8cff 0%, #9bd0ff 100%); /* card background gradient */
+          --paper-bg: #f7fbff;     /* inner paper */
+          --accent: #0b3d91;       /* accent / title color */
+          --muted: #6b7280;        /* muted text */
+          --shadow: 0 14px 40px rgba(10,25,80,0.14);
+          --radius: 1px;
+          --pad: 66px;
+        }
+
+        *{box-sizing:border-box}
+        html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;}
+        body{
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          padding:32px;
+          background: #eef6ff;
+        }
+
+        /* card container */
+        .certificate-wrap{
+          width: 1000px;
+          max-width:96%;
+          border-radius:calc(var(--radius) + 6px);
+          background: var(--card-bg);
+          padding:22px;
+          box-shadow: var(--shadow);
+          position:relative;
+          overflow:visible;
+        }
+
+        /* subtle pattern / shape (decorative) */
+        .certificate-wrap::before{
+          content:"";
+          position:absolute;
+          inset: -30% -10% auto -10%;
+          height:220px;
+          background: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.12), transparent 18%),
+                      radial-gradient(circle at 90% 80%, rgba(255,255,255,0.08), transparent 20%);
+          transform: rotate(-8deg);
+          filter: blur(18px);
+          pointer-events:none;
+        }
+
+        /* inner paper */
+        .certificate{
+          background: var(--paper-bg);
+          border-radius: var(--radius);
+          padding: var(--pad);
+          box-shadow: 0 6px 16px rgba(11,61,145,0.08);
+          border: 1px solid rgba(11,61,145,0.06);
+          display:flex;
+          flex-direction:column;
+          gap:18px;
+        }
+
+        .header{
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          gap:18px;
+        }
+        .brand{
+          display:flex;
+          align-items:center;
+          gap:24px;
+        }
+        .brand img{
+          width:72px;
+          height:72px;
+          object-fit:cover;
+          border-radius:12px;
+          background:linear-gradient(180deg,#fff,#f0f4ff);
+          padding:8px;
+          border: 1px solid rgba(0,0,0,0.04);
+        }
+        .brand .org{
+          line-height:1;
+        }
+        .org .title{
+          font-family: "Playfair Display", serif;
+          font-size:20px;
+          color:var(--accent);
+          font-weight:700;
+        }
+        .org .small{
+          font-size:12px;
+          color:var(--muted);
+          margin-top:4px;
+        }
+
+        /* ribbon badge */
+        .ribbon{
+          align-self:flex-end;
+          background: linear-gradient(180deg,#ffebcd,#ffd17a);
+          color:#582c00;
+          padding:8px 14px;
+          border-radius:999px;
+          font-weight:600;
+          box-shadow: 0 6px 18px rgba(255,150,0,0.12);
+          letter-spacing:0.4px;
+          font-size:14px;
+        }
+
+        .body{
+          text-align:center;
+          padding:20px 12px;
+        }
+        .award{
+          font-family:"Playfair Display", serif;
+          font-size:36px;
+          color:var(--accent);
+          margin:0;
+          font-weight:700;
+        }
+        .subtitle{
+          color:var(--muted);
+          margin-top:8px;
+          font-size:14px;
+        }
+
+        .recipient{
+          margin-top:20px;
+        }
+        .recipient .name{
+          font-family:"Playfair Display", serif;
+          font-size:32px;
+          color:#0d1b47;
+          margin:6px 0;
+          font-weight:700;
+        }
+        .recipient .desc{
+          color:var(--muted);
+          font-size:15px;
+          margin-bottom:6px;
+        }
+
+        .details{
+          margin-top:18px;
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          gap:18px;
+          flex-wrap:wrap;
+          color:var(--muted);
+          font-size:14px;
+        }
+
+        .signatures{
+          display:flex;
+          gap:18px;
+          align-items:center;
+          justify-content:space-between;
+          margin-top:28px;
+          flex-wrap:wrap;
+        }
+        .sig{
+          width:260px;
+          max-width:46%;
+          text-align:left;
+        }
+        .sig .signline{
+          display:block;
+          margin-top:8px;
+          height:38px;
+          border-bottom:1px solid rgba(11,61,145,0.12);
+          width:80%;
+        }
+        .sig .who{
+          margin-top:8px;
+          font-weight:600;
+          color:#0b3d91;
+        }
+        .sig .role{
+          margin-top:4px;
+          font-size:13px;
+          color:var(--muted);
+        }
+
+        /* footer small print */
+        .footer{
+          margin-top:18px;
+          font-size:12px;
+          color:var(--muted);
+          text-align:center;
+        }
+
+        /* responsiveness */
+        @media (max-width:720px){
+          .certificate-wrap{ padding:14px; }
+          .brand img{ width:56px; height:56px; }
+          .award{ font-size:26px; }
+          .recipient .name{ font-size:22px; }
+          .sig{ max-width:100%; width:100%; }
+          .signatures{ gap:12px; }
+        }
+
+        /* print-friendly tweaks */
+        @media print{
+          body{background:white;padding:0}
+          .certificate-wrap{box-shadow:none; background:white; border-radius:0}
+          .certificate{border:none; box-shadow:none}
+        }
+    </style>
+</head>
+<body>
+
+<div class="certificate-wrap" role="region" aria-label="Certificate card">
+    <div class="certificate">
+
+        <div class="header">
+            <div class="brand">
+                <!-- Replace logo.png with your logo file or an image URL -->
+                <img src="logo.png" alt="Organization logo" />
+
+            </div>
+
+
+        </div>
+
+        <div class="body">
+            <p class="subtitle">This is to certify that</p>
+
+            <div class="recipient">
+                <div class="name">{{name}}</div>
+                <div class="desc">has successfully achieved the certificate</div>
+                <div style="margin-top:10px;font-weight:600;color:#28335a">{{certificateName}}</div>
+            </div>
+
+            <h2 class="award" aria-hidden="true">Certificate of Achievement</h2>
+
+            <div class="subtitle" style="max-width:680px;margin:10px auto 0;">
+                Awarded for outstanding performance, dedication, and completion of all required modules with distinction.
+            </div>
+        </div>
+
+        <div class="details" aria-hidden="true">
+            <div>Employee ID: <strong>{{empCode}}</strong></div>
+            <div>Issued: <strong>{{date}}</strong></div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

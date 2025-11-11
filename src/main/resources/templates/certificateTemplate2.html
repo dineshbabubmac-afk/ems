@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate of Achievement</title>
+    <style>
+        body {
+          margin: 0;
+          padding: 0;
+          background-color: #FFFFFF;
+          font-family: "Poppins", sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+        }
+
+        .certificate-card {
+          background: linear-gradient(145deg, #FFFFFF, #FF69B4);
+          width: 850px;
+          padding: 50px;
+          border-radius: 20px;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+          border: 8px double #4338ca;
+          text-align: center;
+          position: relative;
+        }
+
+        .certificate-card::before {
+          content: "";
+          position: absolute;
+          inset: 15px;
+          border: 2px dashed #6366f1;
+          border-radius: 15px;
+          pointer-events: none;
+        }
+
+        .logo {
+          width: 120px;
+          margin-bottom: 15px;
+        }
+
+        h1 {
+          font-family: "Playfair Display", serif;
+          font-size: 36px;
+          color: #1e3a8a;
+          margin-bottom: 10px;
+          letter-spacing: 1px;
+        }
+
+        .subtitle {
+          font-size: 18px;
+          color: #4f46e5;
+          margin-bottom: 40px;
+          font-weight: 500;
+        }
+
+        .recipient {
+          font-size: 28px;
+          font-weight: bold;
+          color: #111827;
+          margin-bottom: 10px;
+          text-transform: uppercase;
+        }
+
+        .text {
+          font-size: 18px;
+          color: #374151;
+          margin-bottom: 50px;
+          line-height: 1.6;
+        }
+
+        .signature {
+          text-align: center;
+        }
+
+        .signature-line {
+          width: 180px;
+          height: 1px;
+          background-color: #111827;
+          margin: 10px auto;
+        }
+        .footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 60px;
+          flex-wrap: wrap;
+        }
+
+        .sign {
+          text-align: center;
+        }
+
+        .sign img {
+          width: 150px;
+          height: auto;
+          margin-bottom: 5px;
+          filter: brightness(1.1);
+        }
+
+        .sign .name {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .sign .role {
+          font-size: 13px;
+          color: #cbd5e1;
+        }
+
+        .date {
+          font-size: 16px;
+          color: #1e3a8a;
+          margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="certificate-card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo_TV_2015.png" alt="Logo" class="logo" />
+    <h1>Certificate of Achievement</h1>
+    <div class="subtitle">This is proudly presented to</div>
+
+    <div class="recipient">John Doe</div>
+
+    <div class="text">
+        For outstanding performance and dedication to excellence. Your hard work, commitment, and achievements are truly commendable.
+    </div>
+
+    <div class="footer">
+
+        <div class="sign">
+            <img src="signature.png" alt="Signature" id="signature" />
+            <div class="name" id="signName">Dr. Meera Kapoor</div>
+            <div class="role" id="signRole">Director, NovaTech Institute</div>
+        </div>
+    </div>
+
+    <div class="date">Issued on: October 28, 2025</div>
+</div>
+</body>
+</html>

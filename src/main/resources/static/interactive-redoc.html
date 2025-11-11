@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tharwah PMS API - Interactive Documentation</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .api-tester {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            width: 400px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            z-index: 1000;
+            max-height: 70vh;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .api-tester.active {
+            display: block;
+        }
+
+        .tester-header {
+            background: #667eea;
+            color: white;
+            padding: 1rem;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tester-content {
+            padding: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e9ecef;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #5a67d8;
+        }
+
+        .btn-close {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .response-container {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+        }
+
+        .response-status {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .response-status.success {
+            color: #28a745;
+        }
+
+        .response-status.error {
+            color: #dc3545;
+        }
+
+        .response-body {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .toggle-tester {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            z-index: 1001;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .toggle-tester:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .redoc-container {
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .api-tester {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                max-height: 100vh;
+                border-radius: 0;
+            }
+
+            .toggle-tester {
+                top: 10px;
+                right: 10px;
+                padding: 0.5rem 0.75rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>🏢 Tharwah PMS API Documentation</h1>
+</div>
+
+<button class="toggle-tester" onclick="toggleTester()">
+    🧪 API Tester
+</button>
+
+<div class="api-tester" id="apiTester">
+    <div class="tester-header">
+        <h3>API Tester</h3>
+        <button class="btn-close" onclick="toggleTester()">×</button>
+    </div>
+    <div class="tester-content">
+        <form onsubmit="makeRequest(event)">
+            <div class="form-group">
+                <label>HTTP Method</label>
+                <select id="method">
+                    <option value="GET">GET</option>
+                    <option value="POST">POST</option>
+                    <option value="PUT">PUT</option>
+                    <option value="PATCH">PATCH</option>
+                    <option value="DELETE">DELETE</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Endpoint URL</label>
+                <input type="text" id="url" placeholder="/your-endpoint" required>
+            </div>
+
+            <div class="form-group">
+                <label>Authorization Token</label>
+                <input type="text" id="token" placeholder="Bearer your-jwt-token">
+            </div>
+
+            <div class="form-group">
+                <label>Request Body (JSON)</label>
+                <textarea id="body" rows="4" placeholder='{"key": "value"}'></textarea>
+            </div>
+
+            <button type="submit" class="btn">Send Request</button>
+        </form>
+
+        <div id="response" style="display: none;"></div>
+    </div>
+</div>
+
+<div class="redoc-container">
+    <redoc spec-url="/v3/api-docs"></redoc>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/redoc@2.1.3/bundles/redoc.standalone.js"></script>
+<script>
+    function toggleTester() {
+        const tester = document.getElementById('apiTester');
+        tester.classList.toggle('active');
+    }
+
+    async function makeRequest(event) {
+        event.preventDefault();
+
+        const method = document.getElementById('method').value;
+        const url = document.getElementById('url').value;
+        const token = document.getElementById('token').value;
+        const body = document.getElementById('body').value;
+        const responseDiv = document.getElementById('response');
+
+        const headers = {
+            'Content-Type': 'application/json'
+        };
+
+        if (token) {
+            headers['Authorization'] = token.startsWith('Bearer ') ? token : `Bearer ${token}`;
+        }
+
+        const requestOptions = {
+            method: method,
+            headers: headers
+        };
+
+        if (body && ['POST', 'PUT', 'PATCH'].includes(method)) {
+            try {
+                JSON.parse(body); // Validate JSON
+                requestOptions.body = body;
+            } catch (e) {
+                showResponse('Invalid JSON in request body', 'error', null);
+                return;
+            }
+        }
+
+        try {
+            const fullUrl = url.startsWith('http') ? url : `http://localhost:8080${url}`;
+            const response = await fetch(fullUrl, requestOptions);
+            const responseText = await response.text();
+
+            let responseJson;
+            try {
+                responseJson = JSON.parse(responseText);
+            } catch (e) {
+                responseJson = responseText;
+            }
+
+            const statusClass = response.ok ? 'success' : 'error';
+            showResponse(`${response.status} ${response.statusText}`, statusClass, responseJson);
+
+        } catch (error) {
+            showResponse('Network Error', 'error', error.message);
+        }
+    }
+
+    function showResponse(status, statusClass, body) {
+        const responseDiv = document.getElementById('response');
+        responseDiv.style.display = 'block';
+        responseDiv.innerHTML = `
+                <div class="response-container">
+                    <div class="response-status ${statusClass}">${status}</div>
+                    <div class="response-body">${typeof body === 'object' ? JSON.stringify(body, null, 2) : body}</div>
+                </div>
+            `;
+    }
+
+    // Add some example endpoints on load
+    window.addEventListener('load', function() {
+        const urlInput = document.getElementById('url');
+        urlInput.placeholder = '/auth/login';
+    });
+</script>
+</body>
+</html>

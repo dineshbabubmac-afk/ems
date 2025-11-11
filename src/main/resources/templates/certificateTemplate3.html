@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certificate of Excellence</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
+
+    <style>
+        body {
+          margin: 0;
+          height: 100vh;
+          background: linear-gradient(135deg, #0f172a, #1e3a8a);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Poppins", sans-serif;
+        }
+
+        .certificate {
+          background: linear-gradient(145deg, #1e3a8a, #0f172a);
+          color: white;
+          width: 900px;
+          padding: 60px 70px;
+          border-radius: 20px;
+          position: relative;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+          text-align: center;
+          overflow: hidden;
+          border: 5px solid #d4af37; /* gold border */
+        }
+
+        /* Decorative gold frame inside */
+        .certificate::before {
+          content: "";
+          position: absolute;
+          inset: 15px;
+          border: 2px solid rgba(255, 215, 0, 0.4);
+          border-radius: 14px;
+          pointer-events: none;
+        }
+
+        .logo {
+          width: 100px;
+          height: 100px;
+          object-fit: contain;
+          margin-bottom: 20px;
+          background: white;
+          border-radius: 50%;
+          padding: 10px;
+        }
+
+        .title {
+          font-family: "Playfair Display", serif;
+          font-size: 40px;
+          color: #ffd700;
+          font-weight: 600;
+          margin-bottom: 8px;
+        }
+
+        .subtitle {
+          font-size: 16px;
+          color: #e5e7eb;
+          margin-bottom: 50px;
+        }
+
+        .recipient {
+          font-family: "Playfair Display", serif;
+          font-size: 36px;
+          font-weight: 600;
+          color: #ffffff;
+          margin: 20px 0 10px;
+        }
+
+        .text {
+          font-size: 16px;
+          color: #d1d5db;
+          max-width: 650px;
+          margin: 0 auto;
+          line-height: 1.6;
+        }
+
+        .highlight {
+          color: #ffd700;
+          font-weight: 600;
+        }
+
+        .footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 60px;
+          flex-wrap: wrap;
+        }
+
+        .sign {
+          text-align: center;
+        }
+
+        .sign img {
+          width: 150px;
+          height: auto;
+          margin-bottom: 5px;
+          filter: brightness(1.1);
+        }
+
+        .sign .name {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .sign .role {
+          font-size: 13px;
+          color: #cbd5e1;
+        }
+
+        .issue-date {
+          font-size: 14px;
+          color: #cbd5e1;
+          text-align: right;
+        }
+
+        .print-btn {
+          margin-top: 40px;
+          background: #ffd700;
+          color: #0f172a;
+          border: none;
+          padding: 10px 18px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-weight: 600;
+          transition: all 0.3s ease;
+        }
+
+        .print-btn:hover {
+          background: #ffce1a;
+          transform: scale(1.03);
+        }
+
+        @media print {
+          body {
+            background: white;
+          }
+          .certificate {
+            box-shadow: none;
+          }
+          .print-btn {
+            display: none;
+          }
+        }
+    </style>
+</head>
+<body>
+<div class="certificate">
+    <img src="logo.png" alt="Logo" class="logo" id="logo" />
+
+    <div class="title">Certificate of Excellence</div>
+    <div class="subtitle">Presented by <span id="orgName">NovaTech Institute</span></div>
+
+    <div class="text">This is to proudly recognize</div>
+
+    <div class="recipient" id="recipientName">Arjun Mehta</div>
+
+    <div class="text">
+        for demonstrating outstanding achievement and exceptional performance in the
+        <span class="highlight" id="courseName">Advanced AI & Machine Learning Program</span>.
+    </div>
+
+    <div class="footer">
+        <div class="sign">
+            <img src="signature.png" alt="Signature" id="signature" />
+            <div class="name" id="signName">Dr. Meera Kapoor</div>
+            <div class="role" id="signRole">Director, NovaTech Institute</div>
+        </div>
+
+        <div class="issue-date">
+            <div>Issued on:</div>
+            <div id="issueDate">October 28, 2025</div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // Certificate data - you can change dynamically
+    const certData = {
+      logoSrc: "https://via.placeholder.com/100x100.png?text=LOGO",
+      orgName: "NovaTech Institute",
+      recipientName: "Arjun Mehta",
+      courseName: "Advanced AI & Machine Learning Program",
+      signName: "Dr. Meera Kapoor",
+      signRole: "Director, NovaTech Institute",
+      signatureSrc: "https://via.placeholder.com/200x60.png?text=Signature",
+      issueDate: "October 28, 2025",
+    };
+
+    document.getElementById("logo").src = certData.logoSrc;
+    document.getElementById("orgName").textContent = certData.orgName;
+    document.getElementById("recipientName").textContent = certData.recipientName;
+    document.getElementById("courseName").textContent = certData.courseName;
+    document.getElementById("signName").textContent = certData.signName;
+    document.getElementById("signRole").textContent = certData.signRole;
+    document.getElementById("signature").src = certData.signatureSrc;
+    document.getElementById("issueDate").textContent = certData.issueDate;
+</script>
+</body>
+</html>

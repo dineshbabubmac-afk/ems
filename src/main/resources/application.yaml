@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: reward-system
+    version: 1.0
+  profiles:
+    active: dev

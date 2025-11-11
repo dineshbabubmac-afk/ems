@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certificate of Achievement</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
+
+    <style>
+        body {
+          margin: 0;
+          font-family: "Poppins", sans-serif;
+          background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+        height:100%;
+        min-height:100vh;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          padding:24px;
+          gap:20px;
+          flex-direction:column;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .certificate {
+          width: 900px;
+          background: linear-gradient(145deg, #ffffff, #f2f5fa);
+          border-radius: 20px;
+          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+          padding: 60px 70px;
+          text-align: center;
+          position: relative;
+          overflow: hidden;
+        }
+
+        /* Decorative background shapes */
+        .certificate::before,
+        .certificate::after {
+          content: "";
+          position: absolute;
+          width: 180px;
+          height: 180px;
+          border-radius: 50%;
+          background: rgba(25, 118, 210, 0.08);
+          z-index: 0;
+        }
+
+        .certificate::before {
+          top: -60px;
+          left: -60px;
+        }
+
+        .certificate::after {
+          bottom: -60px;
+          right: -60px;
+        }
+
+        .certificate-content {
+          position: relative;
+          z-index: 1;
+        }
+
+        .logo {
+          width: 100px;
+          height: 100px;
+          object-fit: contain;
+          margin-bottom: 10px;
+        }
+
+        .title {
+          font-family: "Playfair Display", serif;
+          font-size: 38px;
+          font-weight: 600;
+          color: #1e3a8a;
+          margin-bottom: 5px;
+        }
+
+        .subtitle {
+          font-size: 16px;
+          color: #555;
+          margin-bottom: 40px;
+        }
+
+        .recipient {
+          font-family: "Playfair Display", serif;
+          font-size: 34px;
+          font-weight: 600;
+          color: #0f172a;
+          margin: 20px 0 10px;
+        }
+
+        .text {
+          color: #374151;
+          font-size: 16px;
+          max-width: 650px;
+          margin: 0 auto 30px;
+          line-height: 1.6;
+        }
+
+        .highlight {
+          color: #1e3a8a;
+          font-weight: 600;
+        }
+
+        .footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 50px;
+          flex-wrap: wrap;
+          text-align: left;
+        }
+
+        .sign {
+          text-align: center;
+        }
+
+        .sign img {
+          width: 140px;
+          height: auto;
+          margin-bottom: 5px;
+        }
+
+        .sign .name {
+          font-weight: 600;
+          color: #0f172a;
+        }
+
+        .sign .role {
+          font-size: 13px;
+          color: #555;
+        }
+
+        .issue-date {
+          font-size: 14px;
+          color: #555;
+          text-align: right;
+        }
+
+        .print-btn {
+          margin-top: 40px;
+          background: #1e3a8a;
+          color: white;
+          border: none;
+          padding: 10px 18px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-weight: 600;
+        }
+
+        @media print {
+          body {
+            background: white;
+          }
+          .print-btn {
+            display: none;
+          }
+        }
+    </style>
+</head>
+<body>
+<div class="certificate">
+    <div class="certificate-content">
+        <img src="logo.png" alt="Logo" class="logo" id="logo" />
+        <div class="title">Certificate of Achievement</div>
+        <div class="subtitle">Presented by <span id="orgName">BlueWave Institute</span></div>
+
+        <div class="text">
+            This is to proudly recognize
+        </div>
+
+        <div class="recipient" id="recipientName">Priya Sharma</div>
+
+        <div class="text">
+            for successfully completing the <span class="highlight" id="courseName">Advanced Web Development Program</span>
+            with outstanding performance and dedication.
+        </div>
+
+        <div class="footer">
+            <div class="sign">
+                <img src="signature.png" alt="Signature" id="signature" />
+                <div class="name" id="signName">Dr. Neha Kapoor</div>
+                <div class="role" id="signRole">Director, BlueWave Institute</div>
+            </div>
+
+            <div class="issue-date">
+                <div>Issued on:</div>
+                <div id="issueDate">October 28, 2025</div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    // You can dynamically fill data here
+    const cert = {
+      logoSrc: "https://via.placeholder.com/100x100.png?text=LOGO",
+      orgName: "BlueWave Institute",
+      recipientName: "Priya Sharma",
+      courseName: "Advanced Web Development Program",
+      signName: "Dr. Neha Kapoor",
+      signRole: "Director, BlueWave Institute",
+      signatureSrc: "https://via.placeholder.com/200x60.png?text=Signature",
+      issueDate: "October 28, 2025"
+    };
+
+    document.getElementById("logo").src = cert.logoSrc;
+    document.getElementById("orgName").textContent = cert.orgName;
+    document.getElementById("recipientName").textContent = cert.recipientName;
+    document.getElementById("courseName").textContent = cert.courseName;
+    document.getElementById("signName").textContent = cert.signName;
+    document.getElementById("signRole").textContent = cert.signRole;
+    document.getElementById("signature").src = cert.signatureSrc;
+    document.getElementById("issueDate").textContent = cert.issueDate;
+</script>
+</body>
+</html>

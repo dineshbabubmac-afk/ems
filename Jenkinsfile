@@ -8,7 +8,6 @@ pipeline{
     }
     parameters{
         //string(name: 'ENVIRONMENT', defaultValue: '', description: 'Environment name')
-        // hi
         choice(name: 'ENVIRONMENT', choices:['testing', 'prod'], description: 'environment')
     }
     tools{

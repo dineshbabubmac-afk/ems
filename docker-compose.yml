@@ -1,0 +1,23 @@
+networks:
+  # If it already exists, Docker will just reuse it silently.
+  reward-system-network:
+    driver: bridge
+
+services:
+  postgres_container:
+    image: postgres
+    container_name: postgres_container
+    environment:
+      # this is key-value if want to mentisoned in array format is POSTGRES_DB = reward_system
+      POSTGRES_DB: reward_system
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      ports:
+        - "5432:5432"
+    volumes:
+      - postgres:/var/lib/postgres/data
+
+    #This tells Docker Compose:
+    #➡️ “Attach this container (postgres_container) to the network named reward-system-network.”
+    networks:
+      - spring-boot-network

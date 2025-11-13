@@ -47,9 +47,9 @@ logging:
 zepto:
   api-key: Zoho-enczapikey PHtE6r1YRu+/3jEq+xVU4PG9E8KjYYl8++9neQNCsNtFDP8ETU1c+dssxjXlqUsuAaNCRf+TmYJgtOvK4b6EJWnkNz0aX2qyqK3sx/VYSPOZsbq6x00ctVoddkLeVYXmcN9r3CLXvNfTNA==
   base-url: https://api.zeptomail.in/v1.1/email
-app:
-##  base-url: http://localhost:8085/
-##  file-url: http://localhost:8085/
+# app:
+#  base-url: http://localhost:8085/
+#  file-url: http://localhost:8085/
 app:
   base-url: ${PMS_BASE_URL:http://localhost:8085/}
   file-url: ${PMS_BASE_URL:http://localhost:8085/}

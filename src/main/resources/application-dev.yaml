@@ -55,6 +55,6 @@ app:
   file-url: ${PMS_BASE_URL:http://localhost:8085/}
 
 openapi:
-  server-url: ${PMS_BASE_URL:http://localhost:8085/)
+  server-url: ${PMS_BASE_URL:http://localhost:8085/}
 file:
   upload-dir: ${user.home}/reward-system/uploads

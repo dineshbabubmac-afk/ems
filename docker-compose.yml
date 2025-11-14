@@ -1,8 +1,3 @@
-networks:
-  # If it already exists, Docker will just reuse it silently.
-  reward-system-network:
-    driver: bridge
-
 services:
   postgres_container:
     image: postgres
@@ -12,12 +7,33 @@ services:
       POSTGRES_DB: reward_system
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
-      ports:
-        - "5432:5432"
+    ports:
+      - "5532:5432"
     volumes:
-      - postgres:/var/lib/postgres/data
+      - /Users/macbookvig/Documents/workspace/Docker/postgres_demo:/var/lib/postgresql/
 
     #This tells Docker Compose:
     #➡️ “Attach this container (postgres_container) to the network named reward-system-network.”
     networks:
-      - spring-boot-network
+      - reward-system-network
+
+  reward_system_app:
+    build: .
+    container_name: reward_system_app_container
+    environment:
+      PMS_DB_URL: jdbc:postgresql://postgres_container:5432/reward_system
+      PMS_DB_USERNAME: postgres
+      PMS_DB_PASSWORD: password
+
+    ports:
+      - "8080:8080"
+    networks:
+      - reward-system-network
+    depends_on:
+      - postgres_container
+
+
+networks:
+  # If it already exists, Docker will just reuse it silently.
+  reward-system-network:
+    driver: bridge
